@@ -10,17 +10,13 @@ import {
   useGridApiContext,
   useGridSelector,
 } from "@mui/x-data-grid";
-import axios from "axios";
-import { useMutation, useQuery } from "react-query";
 import {
   Alert,
-  Autocomplete,
   Avatar,
   Box,
   Button,
   Chip,
   CircularProgress,
-  FormControl,
   MenuItem,
   Modal,
   Pagination,
@@ -111,6 +107,7 @@ const Users = () => {
     },
     {
       field: "status",
+      headerName: "Actions",
       width: 240,
       type: "actions",
       getActions: (params) => [
@@ -207,7 +204,8 @@ const Users = () => {
     top: "50%",
     left: "50%",
     transform: "translate(-50%, -50%)",
-    width: 600,
+    width: "90%",
+    maxWidth: 600,
     bgcolor: "background.paper",
     boxShadow: 24,
     borderRadius: "6px",
