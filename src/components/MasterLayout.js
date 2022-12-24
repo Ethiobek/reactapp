@@ -109,7 +109,7 @@ export default function MasterLayout() {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" noWrap component="div">
-            ROHOBOT
+            ARIS
           </Typography>
         </Toolbar>
       </AppBar>
@@ -130,7 +130,7 @@ export default function MasterLayout() {
         open={open}
       >
         <DrawerHeader>
-          <Typography>Rohoboth Solution Tech</Typography>
+          <Typography>ARIS</Typography>
           <IconButton onClick={handleDrawerClose} sx={{ color: "#05396B" }}>
             {theme.direction === "ltr" ? (
               <ChevronLeftIcon />
