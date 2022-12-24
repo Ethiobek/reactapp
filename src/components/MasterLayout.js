@@ -15,7 +15,7 @@ import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import ListItem from "@mui/material/ListItem";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-import { Dashboard, Group } from "@mui/icons-material";
+import { Dashboard, Fingerprint, Group } from "@mui/icons-material";
 import { Outlet } from "react-router-dom";
 import { NavLink } from "react-router-dom";
 import { theme } from "../utils/theme";
@@ -29,8 +29,8 @@ const Link = ({ to, icon, label }) => (
     button
     style={({ isActive }) =>
       isActive
-        ? { color: "white", backgroundColor: "#127458" }
-        : { color: "#05396B" }
+        ? { color: "white", backgroundColor: "#00ABB6" }
+        : { color: "white" }
     }
   >
     <ListItemIcon sx={{ color: "inherit" }}>{icon}</ListItemIcon>
@@ -117,7 +117,6 @@ export default function MasterLayout() {
         sx={{
           width: drawerWidth,
           flexShrink: 0,
-
           "& .MuiDrawer-paper": {
             width: drawerWidth,
             boxSizing: "border-box",
@@ -140,11 +139,21 @@ export default function MasterLayout() {
           </IconButton>
         </DrawerHeader>
         <Divider />
-        <List>
+        <List
+          sx={{
+            height: "100%",
+            bgcolor: "#0F0D0D",
+          }}
+        >
           <Link
             to="/dashboard"
             icon={<Dashboard color="inherit" />}
             label="Dashboard"
+          />
+          <Link
+            to="/sdfsd"
+            icon={<Fingerprint color="inherit" />}
+            label="Registration"
           />
           <Link to="/users" icon={<Group color="inherit" />} label="Users" />
         </List>
