@@ -1,26 +1,33 @@
 import * as React from "react";
-import PropTypes from "prop-types";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import CssBaseline from "@mui/material/CssBaseline";
 import Divider from "@mui/material/Divider";
 import Drawer from "@mui/material/Drawer";
 import IconButton from "@mui/material/IconButton";
-import InboxIcon from "@mui/icons-material/MoveToInbox";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
-import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-import MailIcon from "@mui/icons-material/Mail";
 import MenuIcon from "@mui/icons-material/Menu";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
-import { Dashboard, Fingerprint, Group } from "@mui/icons-material";
+import {
+  AddCard,
+  AssignmentReturn,
+  AssistWalker,
+  BarChart,
+  Campaign,
+  Dashboard,
+  Group,
+  Groups,
+  OtherHouses,
+  Psychology,
+  Settings,
+} from "@mui/icons-material";
 import { Outlet } from "react-router-dom";
 import { NavLink } from "react-router-dom";
-import { theme } from "../utils/theme";
-import styled from "@emotion/styled";
+import { Avatar } from "@mui/material";
 
 const drawerWidth = 240;
 
@@ -28,10 +35,9 @@ const Link = ({ to, icon, label }) => (
   <ListItem
     component={NavLink}
     to={to}
-    button
     style={({ isActive }) =>
       isActive
-        ? { color: "white", backgroundColor: "#00ABB6" }
+        ? { color: "white", backgroundColor: "#0A2647" }
         : { color: "white" }
     }
   >
@@ -63,13 +69,24 @@ function ResponsiveDrawer(props) {
           textAlign: "center",
           justifyContent: "center",
           alignContent: "center",
-          flexDirection: "column",
           p: 3,
         }}
       >
-        <Typography variant="h5">ARIS</Typography>
-        <Typography variant="subtitle2">Amhara Regional ID System</Typography>
+        <Box sx={{ mr: 1, p: 1 }}>
+          <Avatar />
+        </Box>
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            textAlign: "left",
+          }}
+        >
+          <Typography>Bereket Zergaw</Typography>
+          <Typography color="gray">View Profie</Typography>
+        </Box>
       </Box>
+      <Divider sx={{ border: "0.1px solid #0A2647" }} />
       <List>
         <Divider sx={{ width: "100%" }} />
         <Link
@@ -77,12 +94,53 @@ function ResponsiveDrawer(props) {
           icon={<Dashboard color="inherit" />}
           label="Dashboard"
         />
+
         <Link
-          to="/sdfsd"
-          icon={<Fingerprint color="inherit" />}
-          label="Registration"
+          to="/tax-payers"
+          icon={<Groups color="inherit" />}
+          label="Tax Payers"
+        />
+        <Link
+          to="/pay-instruction"
+          icon={<AddCard color="inherit" />}
+          label="Pay. Instruction"
+        />
+        <Link
+          to="/vat-declaration"
+          icon={<Campaign color="inherit" />}
+          label="VAT Declaration"
         />
         <Link to="/users" icon={<Group color="inherit" />} label="Users" />
+        <Link
+          to="/tax-centers"
+          icon={<OtherHouses color="inherit" />}
+          label="Tax Centers"
+        />
+        <Link
+          to="/returned-vat"
+          icon={<AssignmentReturn color="inherit" />}
+          label="Returned VAT"
+        />
+        <Link
+          to="/goods-on-hand"
+          icon={<AssistWalker color="inherit" />}
+          label="Goods On Hand"
+        />
+        <Link
+          to="/control-panel"
+          icon={<Settings color="inherit" />}
+          label="Control Panel"
+        />
+        <Link
+          to="/reports"
+          icon={<BarChart color="inherit" />}
+          label="Report"
+        />
+        <Link
+          to="/activity-log"
+          icon={<Psychology color="inherit" />}
+          label="Activity Log"
+        />
       </List>
     </Box>
   );
@@ -111,7 +169,7 @@ function ResponsiveDrawer(props) {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" noWrap component="div">
-            ARIS
+            Addis Ababa City Government
           </Typography>
         </Toolbar>
       </AppBar>
@@ -163,7 +221,6 @@ function ResponsiveDrawer(props) {
           width: { sm: `calc(100% - ${drawerWidth}px)` },
         }}
       >
-        <Toolbar />
         <Outlet />
       </Box>
     </Box>

@@ -15,7 +15,6 @@ import ShareIcon from "@mui/icons-material/Share";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import { Link } from "react-router-dom";
-import { theme } from "../utils/theme";
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;

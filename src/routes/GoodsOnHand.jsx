@@ -1,7 +1,7 @@
 import { Box } from "@mui/material";
 import { theme } from "../utils/theme";
 
-const Dashboard = () => {
+const GoodsOnHand = () => {
   return (
     <Box
       sx={{
@@ -13,10 +13,9 @@ const Dashboard = () => {
         mr: 1,
       }}
     >
-      <h1>Dashboard</h1>
+      <h1>GoodsOnHand</h1>
     </Box>
   );
 };
 
-export default Dashboard;
-// export { Dashboard };
+export { GoodsOnHand };

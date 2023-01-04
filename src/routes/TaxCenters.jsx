@@ -1,7 +1,7 @@
 import { Box } from "@mui/material";
 import { theme } from "../utils/theme";
 
-const Dashboard = () => {
+const TaxCenters = () => {
   return (
     <Box
       sx={{
@@ -13,10 +13,9 @@ const Dashboard = () => {
         mr: 1,
       }}
     >
-      <h1>Dashboard</h1>
+      <h1>Tax Centers</h1>
     </Box>
   );
 };
 
-export default Dashboard;
-// export { Dashboard };
+export { TaxCenters };
