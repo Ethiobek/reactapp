@@ -35,6 +35,8 @@ import {
 } from "../hooks/useRQData";
 import { Feedback } from "../components/Snackbar";
 import { Controller, useForm } from "react-hook-form";
+import { theme } from "../utils/theme";
+
 // import countryList from "react-select-country-list";
 // import { countries } from "../utils/countries";
 
@@ -220,7 +222,16 @@ const Users = () => {
   }, [isAddUserSuccess, postLoading]);
   console.log("Selected Country : " + value);
   return (
-    <Box sx={{ mx: 2 }}>
+    <Box
+      sx={{
+        [theme.breakpoints.not("xs")]: {
+          ml: "250px",
+          mr: 1,
+        },
+        ml: 1,
+        mr: 1,
+      }}
+    >
       <Feedback
         status={isAddUserSuccess && !postLoading}
         message={"User added successfully!"}

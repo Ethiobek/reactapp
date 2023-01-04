@@ -14,6 +14,7 @@ import { useGetAllData, usePostData } from "../hooks/useRQData";
 
 import { useEffect } from "react";
 import { Feedback } from "../components/Snackbar";
+import { theme } from "../utils/theme";
 
 const Dashboard = () => {
   const { data, isLoading, isError, error, refetch } = useGetAllData("post");
@@ -40,7 +41,14 @@ const Dashboard = () => {
   }, [isSuccess, isLoading]);
 
   return (
-    <Box sx={{ mx: 3 }}>
+    <Box
+      sx={{
+        [theme.breakpoints.not("xs")]: {
+          ml: "250px",
+          mr: 1,
+        },
+      }}
+    >
       <Box>
         <Feedback
           status={isSuccess && !isLoading}

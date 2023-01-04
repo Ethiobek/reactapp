@@ -15,6 +15,7 @@ import ShareIcon from "@mui/icons-material/Share";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import { Link } from "react-router-dom";
+import { theme } from "../utils/theme";
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -34,7 +35,12 @@ export default function RecipeReviewCard(props) {
   };
 
   return (
-    <Card sx={{ minWidth: "300px", m: 2, maxWidth: props.width }}>
+    <Card
+      sx={{
+        minWidth: "300px",
+        maxWidth: props.width,
+      }}
+    >
       <CardHeader
         avatar={
           <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">

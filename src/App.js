@@ -7,7 +7,9 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { Users } from "./pages/Users";
 import { Post } from "./pages/Post";
 import { Home } from "./pages/Home";
-import Dashboard from "./routes/Dashboard";
+// import Dashboard from "./routes/Dashboard";
+import ResponsiveDrawer from "./components/RespnsiveLayout";
+import { Dashboard } from "./pages/Dashboard";
 function App() {
   const queryClient = new QueryClient();
   return (
@@ -15,7 +17,8 @@ function App() {
       <ThemeProvider theme={theme}>
         <Home />
         <Router>
-          <MasterLayout />
+          {/* <MasterLayout /> */}
+          <ResponsiveDrawer />
           <Routes>
             <Route path="/dashboard/:postId" element={<Post />} />
             <Route path="/dashboard" element={<Dashboard />} />
