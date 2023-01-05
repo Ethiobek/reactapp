@@ -28,6 +28,7 @@ import {
 import { Outlet } from "react-router-dom";
 import { NavLink } from "react-router-dom";
 import { Avatar } from "@mui/material";
+import logo from "../assets/logo.png";
 
 const drawerWidth = 240;
 
@@ -61,87 +62,108 @@ function ResponsiveDrawer(props) {
         bgcolor: "#0F0D0D",
       }}
     >
-      <Box
-        sx={{
-          color: "white",
-          display: "flex",
-          alignItems: "center",
-          textAlign: "center",
-          justifyContent: "center",
-          alignContent: "center",
-          p: 3,
-        }}
-      >
-        <Box sx={{ mr: 1, p: 1 }}>
-          <Avatar />
-        </Box>
+      <Box sx={{ height: "10%" }}>
         <Box
           sx={{
+            color: "white",
             display: "flex",
-            flexDirection: "column",
-            textAlign: "left",
+            alignItems: "center",
+            textAlign: "center",
+            justifyContent: "center",
+            alignContent: "center",
+            p: 3,
           }}
         >
-          <Typography>Bereket Zergaw</Typography>
-          <Typography color="gray">View Profie</Typography>
+          <Box sx={{ mr: 1, p: 1 }}>
+            <Avatar />
+          </Box>
+          <Box
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+              textAlign: "left",
+            }}
+          >
+            <Typography>Bereket Zergaw</Typography>
+            <Typography color="gray">View Profie</Typography>
+          </Box>
         </Box>
       </Box>
-      <Divider sx={{ border: "0.1px solid #0A2647" }} />
-      <List>
-        <Divider sx={{ width: "100%" }} />
-        <Link
-          to="/dashboard"
-          icon={<Dashboard color="inherit" />}
-          label="Dashboard"
-        />
+      <Box sx={{ height: "85%" }}>
+        <Divider sx={{ border: "1px solid #2C74B3" }} />
+        <List sx={{ height: "85%" }}>
+          <Divider sx={{ width: "100%" }} />
+          <Link
+            to="/dashboard"
+            icon={<Dashboard color="inherit" />}
+            label="Dashboard"
+          />
 
-        <Link
-          to="/tax-payers"
-          icon={<Groups color="inherit" />}
-          label="Tax Payers"
-        />
-        <Link
-          to="/pay-instruction"
-          icon={<AddCard color="inherit" />}
-          label="Pay. Instruction"
-        />
-        <Link
-          to="/vat-declaration"
-          icon={<Campaign color="inherit" />}
-          label="VAT Declaration"
-        />
-        <Link to="/users" icon={<Group color="inherit" />} label="Users" />
-        <Link
-          to="/tax-centers"
-          icon={<OtherHouses color="inherit" />}
-          label="Tax Centers"
-        />
-        <Link
-          to="/returned-vat"
-          icon={<AssignmentReturn color="inherit" />}
-          label="Returned VAT"
-        />
-        <Link
-          to="/goods-on-hand"
-          icon={<AssistWalker color="inherit" />}
-          label="Goods On Hand"
-        />
-        <Link
-          to="/control-panel"
-          icon={<Settings color="inherit" />}
-          label="Control Panel"
-        />
-        <Link
-          to="/reports"
-          icon={<BarChart color="inherit" />}
-          label="Report"
-        />
-        <Link
-          to="/activity-log"
-          icon={<Psychology color="inherit" />}
-          label="Activity Log"
-        />
-      </List>
+          <Link
+            to="/tax-payers"
+            icon={<Groups color="inherit" />}
+            label="Tax Payers"
+          />
+          <Link
+            to="/pay-instruction"
+            icon={<AddCard color="inherit" />}
+            label="Pay. Instruction"
+          />
+          <Link
+            to="/vat-declaration"
+            icon={<Campaign color="inherit" />}
+            label="VAT Declaration"
+          />
+          <Link to="/users" icon={<Group color="inherit" />} label="Users" />
+          <Link
+            to="/tax-centers"
+            icon={<OtherHouses color="inherit" />}
+            label="Tax Centers"
+          />
+          <Link
+            to="/returned-vat"
+            icon={<AssignmentReturn color="inherit" />}
+            label="Returned VAT"
+          />
+          <Link
+            to="/goods-on-hand"
+            icon={<AssistWalker color="inherit" />}
+            label="Goods On Hand"
+          />
+          <Link
+            to="/control-panel"
+            icon={<Settings color="inherit" />}
+            label="Control Panel"
+          />
+          <Link
+            to="/reports"
+            icon={<BarChart color="inherit" />}
+            label="Report"
+          />
+          <Link
+            to="/activity-log"
+            icon={<Psychology color="inherit" />}
+            label="Activity Log"
+          />
+        </List>
+      </Box>
+      <Box sx={{ height: "5%" }}>
+        <Box
+          sx={{
+            height: "5%",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            textAlign: "center",
+            flexDirection: "column",
+          }}
+        >
+          <Divider sx={{ border: "1px solid gray", width: "100%", mb: 1 }} />
+          <Typography color="gray">
+            Powered By Rohoboth Solution Tech
+          </Typography>
+        </Box>
+      </Box>
     </Box>
   );
 
@@ -168,7 +190,8 @@ function ResponsiveDrawer(props) {
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" noWrap component="div">
+          <img src={logo} width="40px" />
+          <Typography variant="subtitle1" noWrap component="div" sx={{ ml: 1 }}>
             Addis Ababa City Government
           </Typography>
         </Toolbar>

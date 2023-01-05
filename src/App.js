@@ -3,9 +3,7 @@ import { theme } from "./utils/theme";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { ReactQueryDevtools } from "react-query/devtools";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import { Home } from "./pages/Home";
 import Dashboard from "./routes/Dashboard";
-import ResponsiveDrawer from "./components/RespnsiveLayout";
 import { ActivityLog } from "./routes/ActivityLog";
 import { TaxPayers } from "./routes/Taxpayers";
 import { PaymentInstruction } from "./routes/PaymentInstruction";
@@ -16,16 +14,16 @@ import { ReturnedVat } from "./routes/ReturnedVat";
 import { GoodsOnHand } from "./routes/GoodsOnHand";
 import { ControlPanel } from "./routes/ControlPanel";
 import { Report } from "./routes/Report";
+import { Login } from "./routes/Login";
 function App() {
   const queryClient = new QueryClient();
   return (
     <QueryClientProvider client={queryClient}>
       <ThemeProvider theme={theme}>
-        <Home />
         <Router>
-          <ResponsiveDrawer />
           <Routes>
-            <Route path="/" element={<Dashboard />} />
+            <Route path="/" element={<Login />} />
+            <Route path="/login" element={<Login />} />
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/activity-log" element={<ActivityLog />} />
             <Route path="/tax-payers" element={<TaxPayers />} />
