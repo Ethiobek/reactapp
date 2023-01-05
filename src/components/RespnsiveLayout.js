@@ -38,8 +38,8 @@ const Link = ({ to, icon, label }) => (
     to={to}
     style={({ isActive }) =>
       isActive
-        ? { color: "white", backgroundColor: "#0A2647" }
-        : { color: "white" }
+        ? { color: "white", backgroundColor: "#0A2647", fontWeight: "bold" }
+        : { color: "white", fontWeight: "bold" }
     }
   >
     <ListItemIcon sx={{ color: "inherit" }}>{icon}</ListItemIcon>
