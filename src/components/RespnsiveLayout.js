@@ -62,7 +62,7 @@ function ResponsiveDrawer(props) {
         bgcolor: "#0F0D0D",
       }}
     >
-      <Box sx={{ height: "10%" }}>
+      <Box sx={{ height: "10%", pb: 1 }}>
         <Box
           sx={{
             color: "white",
@@ -90,8 +90,7 @@ function ResponsiveDrawer(props) {
         </Box>
       </Box>
       <Box sx={{ height: "85%" }}>
-        <Divider sx={{ border: "1px solid #2C74B3" }} />
-        <List sx={{ height: "85%" }}>
+        <List>
           <Divider sx={{ width: "100%" }} />
           <Link
             to="/dashboard"

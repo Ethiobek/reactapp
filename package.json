@@ -20,6 +20,7 @@
     "react-router-dom": "^6.4.0",
     "react-scripts": "5.0.1",
     "react-select-country-list": "^2.2.3",
+    "victory": "^36.6.8",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
