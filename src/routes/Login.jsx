@@ -1,4 +1,4 @@
-import { Box, Button, CssBaseline, TextField, Typography } from "@mui/material";
+import { Box, Button, CssBaseline, Paper, TextField, Typography } from "@mui/material";
 import { NavLink } from "react-router-dom";
 import logo from "../assets/logo.png";
 const Login = () => {
@@ -31,10 +31,9 @@ const Login = () => {
         <Typography variant="subtitle1" color="#FFF9FA">
           Please enter your username and password
         </Typography>
-        <Box
+        <Paper
           sx={{
             p: 3,
-            background: "white",
             borderRadius: "7px",
             display: "flex",
             flexDirection: "column",
@@ -48,7 +47,7 @@ const Login = () => {
             fullWidth
           />
           <TextField
-            sx={{ backgroundColor: "whitesmoke", borderRadius: "7px" }}
+            sx={{  borderRadius: "7px" }}
             variant="outlined"
             label="Password"
             size="small"
@@ -68,7 +67,7 @@ const Login = () => {
               Login
             </Button>
           </Box>
-        </Box>
+        </Paper>
       </Box>
     </Box>
   );

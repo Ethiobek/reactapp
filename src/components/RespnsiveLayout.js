@@ -18,6 +18,7 @@ import {
   AssistWalker,
   BarChart,
   Campaign,
+  DarkMode,
   Dashboard,
   Group,
   Groups,
@@ -27,7 +28,7 @@ import {
 } from "@mui/icons-material";
 import { Outlet } from "react-router-dom";
 import { NavLink } from "react-router-dom";
-import { Avatar } from "@mui/material";
+import { Avatar, Fab, Paper } from "@mui/material";
 import logo from "../assets/logo.png";
 
 const drawerWidth = 240;
@@ -89,7 +90,7 @@ function ResponsiveDrawer(props) {
           </Box>
         </Box>
       </Box>
-      <Box sx={{ height: "85%" }}>
+      <Box sx={{ height: "85%", overflowY: "scroll" }}>
         <List>
           <Divider sx={{ width: "100%" }} />
           <Link
@@ -172,6 +173,7 @@ function ResponsiveDrawer(props) {
   return (
     <Box sx={{ display: "flex" }}>
       <CssBaseline />
+
       <AppBar
         position="fixed"
         sx={{

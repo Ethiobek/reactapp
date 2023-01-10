@@ -1,4 +1,12 @@
 import { createTheme } from "@mui/material";
+import { useEffect, useState } from "react";
+const mode = localStorage.getItem("mode");
+
+export const darkTheme = createTheme({
+  palette: {
+    mode: "dark",
+  },
+});
 
 export const theme = createTheme({
   palette: {

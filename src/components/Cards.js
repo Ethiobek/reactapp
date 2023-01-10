@@ -17,7 +17,6 @@ const SummaryCard = (props) => {
         borderRadius: "5px",
         justifyContent: "space-around",
         boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",
-        bgcolor: "#F4F4F4",
       }}
     >
       <Box

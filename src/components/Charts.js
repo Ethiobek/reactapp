@@ -1,5 +1,11 @@
 import { Box, Button, Divider, Paper, Typography } from "@mui/material";
-import { VictoryChart, VictoryBar, VictoryPie } from "victory";
+import {
+  VictoryChart,
+  VictoryBar,
+  VictoryPie,
+  VictoryAxis,
+  VictoryTheme,
+} from "victory";
 
 const BarChart = (props) => {
   return (
@@ -16,13 +22,34 @@ const BarChart = (props) => {
       <Box sx={{ display: "flex", justifyContent: "flex-end", m: 2 }}>
         <Button variant="outlined">All Centers</Button>
       </Box>
-      <VictoryChart domainPadding={25}>
+      <VictoryChart domainPadding={15}>
         <VictoryBar
-          style={{
-            data: { fill: "#0A2647", fontSize: "12px" },
-            color: "gray",
-          }}
           data={props.data}
+          style={{
+            data: {
+              fill: "#0A2647",
+              fontSize: "10px",
+              stroke: "white",
+              strokeWidth: "0.5px",
+            },
+          }}
+        />
+        <VictoryAxis
+          style={{
+            tickLabels: {
+              fill: "green",
+              fontSize: "12px",
+            },
+          }}
+        />
+        <VictoryAxis
+          dependentAxis
+          style={{
+            tickLabels: {
+              fill: "green",
+              fontSize: "12px",
+            },
+          }}
         />
       </VictoryChart>
     </Paper>

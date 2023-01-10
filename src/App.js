@@ -1,5 +1,5 @@
-import { ThemeProvider, Typography } from "@mui/material";
-import { theme } from "./utils/theme";
+import { Fab, ThemeProvider, Typography } from "@mui/material";
+import { darkTheme, theme } from "./utils/theme";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { ReactQueryDevtools } from "react-query/devtools";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
@@ -15,11 +15,27 @@ import { GoodsOnHand } from "./routes/GoodsOnHand";
 import { ControlPanel } from "./routes/ControlPanel";
 import { Report } from "./routes/Report";
 import { Login } from "./routes/Login";
+import {
+  DarkMode,
+  LightMode,
+  LightModeOutlined,
+  LightModeRounded,
+} from "@mui/icons-material";
+import { useEffect, useState } from "react";
 function App() {
+  const [dmode, setDmode] = useState(localStorage.getItem("mode") || "light");
   const queryClient = new QueryClient();
+  const darkMode = () => {
+    setDmode((prevMode) => (prevMode === "light" ? "dark" : "light"));
+  };
+
+  useEffect(() => {
+    // setDmode((prevMode) => (prevMode === "light" ? "dark" : "light"));
+    localStorage.setItem("mode", dmode);
+  }, [dmode, setDmode]);
   return (
     <QueryClientProvider client={queryClient}>
-      <ThemeProvider theme={theme}>
+      <ThemeProvider theme={dmode == "dark" ? darkTheme : theme}>
         <Router>
           <Routes>
             <Route path="/" element={<Login />} />
@@ -38,6 +54,25 @@ function App() {
           </Routes>
         </Router>
       </ThemeProvider>
+      <Fab
+        color="primary"
+        aria-label="add"
+        sx={{
+          position: "absolute",
+          margin: 0,
+          top: "auto",
+          right: 20,
+          bottom: 20,
+          left: "auto",
+          position: "fixed",
+        }}
+      >
+        {dmode === "light" ? (
+          <DarkMode onClick={darkMode} />
+        ) : (
+          <LightMode onClick={darkMode} />
+        )}
+      </Fab>
       <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>
   );
