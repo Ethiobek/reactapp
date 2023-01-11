@@ -1,5 +1,5 @@
 import { Box, Grid } from "@mui/material";
-import { SummaryCard } from "../components/Cards";
+import { BankSummary, SummaryCard } from "../components/Cards";
 import { BarChart, LineChart, PieChart } from "../components/Charts";
 import ResponsiveDrawer from "../components/RespnsiveLayout";
 import { theme } from "../utils/theme";
@@ -88,7 +88,7 @@ const Dashboard = () => {
 
           <Grid xs={12} md={4} sm={12} xl={4} lg={4}>
             <PieChart data={sampleData} detailed />
-            <LineChart data={sampleData} />
+            <BankSummary />
             {/*Bank   */}
           </Grid>
         </Grid>

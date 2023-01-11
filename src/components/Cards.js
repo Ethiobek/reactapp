@@ -1,4 +1,13 @@
+import {
+  CurrencyBitcoin,
+  DoneAll,
+  DoneAllRounded,
+  RotateLeft,
+  Toll,
+  TranscribeSharp,
+} from "@mui/icons-material";
 import { Box, Paper, Typography } from "@mui/material";
+import { darkTheme, theme } from "../utils/theme";
 
 const dangerColor = "rgba(180, 0, 0, 0.1)";
 const dangerTColor = "rgba(255, 0, 0, 0.8)";
@@ -66,4 +75,74 @@ const SummaryCard = (props) => {
   );
 };
 
-export { SummaryCard };
+const BankSummary = (props) => {
+  return (
+    <Paper
+      theme={darkTheme}
+      sx={{ mx: 1, my: 1, bgcolor: "#0E0A23" }}
+      elevation={3}
+    >
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "center",
+          textAlign: "center",
+          py: 3,
+        }}
+      >
+        <Box sx={{ display: "flex" }}>
+          <Toll sx={{ mr: 1, color: "yellow" }} />
+          <Typography>Commercial Bank of Ethiopia</Typography>
+        </Box>
+      </Box>
+      <Box sx={{ display: "flex", justifyContent: "center", p: 1 }}>
+        <Typography letterSpacing={2}>10001*****113</Typography>
+      </Box>
+      <Box sx={{ display: "flex", justifyContent: "center", p: 1 }}>
+        <Typography variant="subtitle1">Lideta K/Ketema</Typography>
+      </Box>
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "space-evenly",
+        }}
+      >
+        <Box
+          sx={{
+            display: "flex",
+            mr: 1,
+            flexDirection: "column",
+            justifyContent: "center",
+          }}
+        >
+          <Box sx={{ display: "flex", justifyContent: "center" }}>
+            <Box sx={{ mr: 1, color: "green" }}>
+              <DoneAll />
+            </Box>
+            <Box>14,546</Box>
+          </Box>
+          <Typography variant="subtitle">Collected Money</Typography>
+        </Box>
+        <Box
+          sx={{
+            py: 3,
+            display: "flex",
+            mr: 1,
+            flexDirection: "column",
+            justifyContent: "center",
+          }}
+        >
+          <Box sx={{ display: "flex", justifyContent: "center" }}>
+            <Box sx={{ mr: 1, color: "yellow" }}>
+              <RotateLeft />
+            </Box>
+            <Box>14,546</Box>
+          </Box>
+          <Typography variant="subtitle">Not receive yet</Typography>
+        </Box>
+      </Box>
+    </Paper>
+  );
+};
+
+export { SummaryCard, BankSummary };
