@@ -66,12 +66,9 @@ function App() {
           left: "auto",
           position: "fixed",
         }}
+        onClick={darkMode}
       >
-        {dmode === "light" ? (
-          <DarkMode onClick={darkMode} />
-        ) : (
-          <LightMode onClick={darkMode} />
-        )}
+        {dmode === "light" ? <DarkMode /> : <LightMode />}
       </Fab>
       <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>
