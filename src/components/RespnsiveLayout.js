@@ -59,7 +59,7 @@ function ResponsiveDrawer(props) {
     <Box
       sx={{
         height: "100%",
-        bgcolor: "#0F0D0D",
+        bgcolor: "#030911",
       }}
     >
       <Box sx={{ height: "10%", pb: 1 }}>

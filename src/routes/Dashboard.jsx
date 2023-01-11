@@ -82,12 +82,13 @@ const Dashboard = () => {
               rateStatus="danger"
             />
           </Grid>
-          <Grid xs={12} md={8} sm={12} xl={7} lg={6}>
+          <Grid xs={12} md={8} sm={12} xl={8} lg={8}>
             <BarChart data={sampleData} />
           </Grid>
 
-          <Grid xs={12} md={4} sm={12} xl={5} lg={6}>
+          <Grid xs={12} md={4} sm={12} xl={4} lg={4}>
             <PieChart data={sampleData} detailed />
+            {/*Bank   */}
           </Grid>
         </Grid>
       </Box>

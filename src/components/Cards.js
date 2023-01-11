@@ -1,7 +1,7 @@
 import { Box, Paper, Typography } from "@mui/material";
 
 const dangerColor = "rgba(180, 0, 0, 0.1)";
-const dangerTColor = "rgba(180, 0, 0, 0.6)";
+const dangerTColor = "rgba(255, 0, 0, 0.8)";
 
 const successColor = "rgba(0, 200, 0, 0.2)";
 const successTColor = "rgba(0, 200, 0, 1)";
@@ -25,18 +25,19 @@ const SummaryCard = (props) => {
           justifyContent: "space-between",
         }}
       >
-        <Typography variant="subtitle1">{props.title}</Typography>
+        <Typography variant="h6">{props.title}</Typography>
         <Box
           sx={{
             bgcolor: "#0E0A23",
             px: 2,
-            py: 1,
             borderRadius: "5px",
-            display: "flex",
-            height: "40px",
+
+            maxHeight: "30px",
           }}
         >
-          <Typography color="white">Monthly</Typography>
+          <Typography color="white" variant="caption">
+            Monthly
+          </Typography>
         </Box>
       </Box>
       <Box>
