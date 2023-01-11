@@ -25,9 +25,7 @@ const SummaryCard = (props) => {
           justifyContent: "space-between",
         }}
       >
-        <Typography variant="h6" color="#205295">
-          {props.title}
-        </Typography>
+        <Typography variant="subtitle1">{props.title}</Typography>
         <Box
           sx={{
             bgcolor: "#0E0A23",
@@ -42,7 +40,9 @@ const SummaryCard = (props) => {
         </Box>
       </Box>
       <Box>
-        <Typography variant={"h6"}>{props.amount} </Typography>
+        <Typography variant={"h6"} color="gray">
+          {props.amount}{" "}
+        </Typography>
       </Box>
       <Box sx={{ mt: 2 }}>
         <Typography
