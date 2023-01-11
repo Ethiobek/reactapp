@@ -1,5 +1,11 @@
 import { Box, Button, Divider, Paper, Typography } from "@mui/material";
-import { VictoryChart, VictoryBar, VictoryPie, VictoryAxis } from "victory";
+import {
+  VictoryChart,
+  VictoryBar,
+  VictoryPie,
+  VictoryAxis,
+  VictoryLine,
+} from "victory";
 
 const BarChart = (props) => {
   return (
@@ -177,4 +183,62 @@ const PieChart = (props) => {
   );
 };
 
-export { BarChart, PieChart };
+const LineChart = (props) => {
+  return (
+    <Paper
+      sx={{
+        borderRadius: "5px",
+        display: "flex",
+        flexDirection: "column",
+        m: 1,
+        p: 1,
+      }}
+      elevation={3}
+    >
+      <Box
+        sx={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          flexDirection: "column",
+          alignItems: "center",
+          textAlign: "center",
+        }}
+      >
+        <Typography sx={{ p: 1 }} variant="h6">
+          Payment History Graph
+        </Typography>
+
+        <VictoryChart
+          domainPadding={{ x: 15, y: 50 }}
+          padding={{ top: 15, bottom: 30, right: 30, left: 60 }}
+        >
+          <VictoryLine
+            interpolation="natural"
+            data={props.data}
+            style={{ data: { stroke: "#2C74B3" } }}
+          />
+          <VictoryAxis
+            style={{
+              tickLabels: {
+                fill: "#2C74B3",
+              },
+              axis: { stroke: "#2C74B3" },
+            }}
+          />
+          <VictoryAxis
+            dependentAxis
+            style={{
+              tickLabels: {
+                fill: "#2C74B3",
+              },
+              axis: { stroke: "#2C74B3" },
+            }}
+          />
+        </VictoryChart>
+      </Box>
+    </Paper>
+  );
+};
+
+export { BarChart, PieChart, LineChart };
