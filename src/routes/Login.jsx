@@ -1,4 +1,11 @@
-import { Box, Button, CssBaseline, Paper, TextField, Typography } from "@mui/material";
+import {
+  Box,
+  Button,
+  CssBaseline,
+  Paper,
+  TextField,
+  Typography,
+} from "@mui/material";
 import { NavLink } from "react-router-dom";
 import logo from "../assets/logo.png";
 const Login = () => {
@@ -28,17 +35,19 @@ const Login = () => {
         <Typography variant="h5" color="white">
           LOGIN
         </Typography>
-        <Typography variant="subtitle1" color="#FFF9FA">
-          Please enter your username and password
-        </Typography>
+
         <Paper
           sx={{
+            mt: 1,
             p: 3,
             borderRadius: "7px",
             display: "flex",
             flexDirection: "column",
           }}
         >
+          <Typography variant="subtitle" sx={{ py: 1 }}>
+            By login you agree our Terms & Condition
+          </Typography>
           <TextField
             sx={{ borderRadius: "7px", mb: 2, mt: 3 }}
             variant="outlined"
@@ -47,15 +56,13 @@ const Login = () => {
             fullWidth
           />
           <TextField
-            sx={{  borderRadius: "7px" }}
+            sx={{ borderRadius: "7px" }}
             variant="outlined"
             label="Password"
             size="small"
             fullWidth
           />
-          <Typography variant="subtitle" sx={{ py: 1 }}>
-            By login you agree our Terms & Condition
-          </Typography>
+
           <Box
             sx={{
               display: "flex",
