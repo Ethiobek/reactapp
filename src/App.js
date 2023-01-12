@@ -71,7 +71,6 @@ function App() {
         </Router>
       </ThemeProvider>
       <Fab
-        color="primary"
         size="medium"
         aria-label="add"
         sx={{
@@ -88,6 +87,7 @@ function App() {
         {dmode === "light" ? <DarkMode /> : <LightMode />}
       </Fab>
       <Fab
+        color="primary"
         aria-label="add"
         size="medium"
         sx={{
