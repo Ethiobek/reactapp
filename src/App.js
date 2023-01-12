@@ -25,6 +25,7 @@ import {
 } from "@mui/icons-material";
 import { useEffect, useState } from "react";
 import i18next from "i18next";
+import { useTranslation } from "react-i18next";
 
 function App() {
   const [dmode, setDmode] = useState(localStorage.getItem("mode") || "light");
@@ -48,7 +49,7 @@ function App() {
     localStorage.setItem("i18nextLng", lang);
     i18next.changeLanguage(lang);
   }, [lang, setLang]);
-
+  const { t } = useTranslation();
   return (
     <QueryClientProvider client={queryClient}>
       <ThemeProvider theme={dmode == "dark" ? darkTheme : theme}>
@@ -78,7 +79,7 @@ function App() {
           margin: 0,
           top: "auto",
           right: 20,
-          bottom: 80,
+          bottom: 90,
           left: "auto",
           position: "fixed",
         }}
@@ -95,7 +96,7 @@ function App() {
           margin: 0,
           top: "auto",
           right: 20,
-          bottom: 20,
+          bottom: 35,
           left: "auto",
           position: "fixed",
         }}
@@ -113,6 +114,25 @@ function App() {
           </Box>
         )}
       </Fab>
+      <Box
+        sx={{
+          position: "absolute",
+          margin: 0,
+          top: "auto",
+          right: 20,
+          bottom: 2,
+          left: "auto",
+          position: "fixed",
+          bgcolor: "black",
+          p: "1px",
+          px: "10px",
+          borderRadius: "7px",
+        }}
+      >
+        <Typography color="gray" variant="caption">
+          {t("poweredBy")}
+        </Typography>
+      </Box>
       <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>
   );

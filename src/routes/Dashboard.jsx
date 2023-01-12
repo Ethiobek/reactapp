@@ -1,4 +1,4 @@
-import { Box, Grid } from "@mui/material";
+import { Box, Grid, Paper } from "@mui/material";
 import { BankSummary, SummaryCard } from "../components/Cards";
 import { BarChart, LineChart, PieChart } from "../components/Charts";
 import ResponsiveDrawer from "../components/RespnsiveLayout";

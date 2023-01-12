@@ -59,11 +59,10 @@ function ResponsiveDrawer(props) {
   const drawer = (
     <Box
       sx={{
-        height: "100%",
         bgcolor: "#030911",
       }}
     >
-      <Box sx={{ height: "10%", pb: 1 }}>
+      <Box>
         <Box
           sx={{
             color: "white",
@@ -90,7 +89,7 @@ function ResponsiveDrawer(props) {
           </Box>
         </Box>
       </Box>
-      <Box sx={{ height: "85%" }}>
+      <Box>
         <List>
           <Divider sx={{ width: "100%" }} />
           <Link
@@ -152,21 +151,6 @@ function ResponsiveDrawer(props) {
           />
         </List>
       </Box>
-      <Box sx={{ height: "5%" }}>
-        <Box
-          sx={{
-            height: "5%",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            textAlign: "center",
-            flexDirection: "column",
-          }}
-        >
-          <Divider sx={{ border: "1px solid gray", width: "100%", mb: 1 }} />
-          <Typography color="gray">{t("poweredBy")}</Typography>
-        </Box>
-      </Box>
     </Box>
   );
 
@@ -202,7 +186,10 @@ function ResponsiveDrawer(props) {
       </AppBar>
       <Box
         component="nav"
-        sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 } }}
+        sx={{
+          width: { sm: drawerWidth },
+          flexShrink: { sm: 0 },
+        }}
         aria-label="mailbox folders"
       >
         {/* The implementation can be swapped with js to avoid SEO duplication of links. */}
@@ -220,8 +207,9 @@ function ResponsiveDrawer(props) {
               boxSizing: "border-box",
               width: drawerWidth,
               color: "#05396B",
-              bgcolor: "white",
+              bgcolor: "#030911",
             },
+            border: "1px solid red",
           }}
         >
           {drawer}
@@ -233,7 +221,9 @@ function ResponsiveDrawer(props) {
             "& .MuiDrawer-paper": {
               boxSizing: "border-box",
               width: drawerWidth,
+              bgcolor: "#030911",
             },
+            border: "1px solid red",
           }}
           open
         >
