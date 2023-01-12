@@ -7,6 +7,7 @@ import {
   TranscribeSharp,
 } from "@mui/icons-material";
 import { Box, Paper, Typography } from "@mui/material";
+import { useTranslation } from "react-i18next";
 import { darkTheme, theme } from "../utils/theme";
 
 const dangerColor = "rgba(180, 0, 0, 0.1)";
@@ -45,7 +46,7 @@ const SummaryCard = (props) => {
           }}
         >
           <Typography color="white" variant="caption">
-            Monthly
+            {props.freq}
           </Typography>
         </Box>
       </Box>
@@ -76,6 +77,7 @@ const SummaryCard = (props) => {
 };
 
 const BankSummary = (props) => {
+  const { t } = useTranslation();
   return (
     <Paper
       theme={darkTheme}
@@ -121,7 +123,7 @@ const BankSummary = (props) => {
             </Box>
             <Box>{props.collectedAmount}</Box>
           </Box>
-          <Typography variant="subtitle">Collected Money</Typography>
+          <Typography variant="subtitle">{t("collectedMoney")}</Typography>
         </Box>
         <Box
           sx={{
@@ -138,7 +140,7 @@ const BankSummary = (props) => {
             </Box>
             <Box>{props.notRecieved}</Box>
           </Box>
-          <Typography variant="subtitle">Not received yet</Typography>
+          <Typography variant="subtitle">{t("notRecievedYet")}</Typography>
         </Box>
       </Box>
     </Paper>

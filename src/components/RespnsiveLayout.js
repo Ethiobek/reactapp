@@ -86,7 +86,7 @@ function ResponsiveDrawer(props) {
             }}
           >
             <Typography>Bereket Zergaw</Typography>
-            <Typography color="gray">View Profie</Typography>
+            <Typography color="gray">{t("viewProfile")}</Typography>
           </Box>
         </Box>
       </Box>
@@ -114,21 +114,25 @@ function ResponsiveDrawer(props) {
             icon={<Campaign color="inherit" />}
             label={t("vatdec")}
           />
-          <Link to="/users" icon={<Group color="inherit" />} label="Users" />
+          <Link
+            to="/users"
+            icon={<Group color="inherit" />}
+            label={t("users")}
+          />
           <Link
             to="/tax-centers"
             icon={<OtherHouses color="inherit" />}
-            label={t("users")}
+            label={t("tcenter")}
           />
           <Link
             to="/returned-vat"
             icon={<AssignmentReturn color="inherit" />}
-            label={t("tcenter")}
+            label={t("retvat")}
           />
           <Link
             to="/goods-on-hand"
             icon={<AssistWalker color="inherit" />}
-            label={t("retvat")}
+            label={t("goodsonHand")}
           />
           <Link
             to="/control-panel"
@@ -160,9 +164,7 @@ function ResponsiveDrawer(props) {
           }}
         >
           <Divider sx={{ border: "1px solid gray", width: "100%", mb: 1 }} />
-          <Typography color="gray">
-            Powered By Rohoboth Solution Tech
-          </Typography>
+          <Typography color="gray">{t("poweredBy")}</Typography>
         </Box>
       </Box>
     </Box>

@@ -1,4 +1,5 @@
 import { Box, Button, Divider, Paper, Typography } from "@mui/material";
+import { useTranslation } from "react-i18next";
 import {
   VictoryChart,
   VictoryBar,
@@ -8,6 +9,7 @@ import {
 } from "victory";
 
 const BarChart = (props) => {
+  const { t } = useTranslation();
   return (
     <Paper sx={{ px: 3, py: 2, borderRadius: "7px", m: 1 }} elevation={3}>
       <Box
@@ -17,12 +19,9 @@ const BarChart = (props) => {
         }}
       >
         <Typography variant="h5" fontWeight={"bold"}>
-          Collected VAT
+          {t("collectedVat")}
         </Typography>
-        <Typography variant="subtitle1">
-          A chart that describes the relation between collected VAT with in each
-          month
-        </Typography>
+        <Typography variant="subtitle1">{t("collectedVatSummary")}</Typography>
       </Box>
       <Box
         sx={{
@@ -30,7 +29,7 @@ const BarChart = (props) => {
           justifyContent: "flex-end",
         }}
       >
-        <Button variant="contained">All Centers</Button>
+        <Button variant="contained">{t("allCenters")}</Button>
       </Box>
       <Box>
         <VictoryChart
@@ -80,6 +79,7 @@ const BarChart = (props) => {
 };
 
 const PieChart = (props) => {
+  const { t } = useTranslation();
   return (
     <Paper
       sx={{
@@ -101,7 +101,7 @@ const PieChart = (props) => {
         }}
       >
         <Typography sx={{ p: 1 }} variant="h6">
-          Tax Payers Summary
+          {t("taxPayersSummary")}
         </Typography>
         <svg
           width={210}
@@ -123,8 +123,8 @@ const PieChart = (props) => {
               labels: { fill: "#2C74B3", fontSize: 15 },
             }}
             data={[
-              { x: "TOT", y: 400000 },
-              { x: "VAT ", y: 800524 },
+              { x: t("tot"), y: 400000 },
+              { x: t("vat"), y: 800524 },
             ]}
             colorScale={["black", "#144272"]}
           />
@@ -135,17 +135,16 @@ const PieChart = (props) => {
           <Box
             sx={{
               display: "flex",
-              justifyContent: "space-between",
-              mx: 2,
-              ml: 2,
+              justifyContent: "space-evenly",
+              ml: 3,
             }}
           >
-            <Typography variant="subtitle1">Type</Typography>
-            <Typography variant="subtitle1">Total</Typography>
-            <Typography variant="subtitle1">Rate/Month</Typography>
+            <Typography variant="subtitle1">{t("type")}</Typography>
+            <Typography variant="subtitle1">{t("total")}</Typography>
+            <Typography variant="subtitle1">{t("rate")}</Typography>
           </Box>
           <Divider sx={{ my: 1, border: "1px solid white" }} />
-          <Box sx={{ display: "flex", justifyContent: "space-between", mx: 2 }}>
+          <Box sx={{ display: "flex", justifyContent: "space-evenly" }}>
             <Box sx={{ display: "flex" }}>
               <Box
                 sx={{
@@ -155,7 +154,7 @@ const PieChart = (props) => {
                   mr: 1,
                 }}
               ></Box>
-              <Typography variant="caption">VAT Payers</Typography>
+              <Typography variant="caption">{t("vatpayers")}</Typography>
             </Box>
             <Typography variant="caption">800,524</Typography>
             <Typography variant="caption">+12%</Typography>
@@ -163,8 +162,7 @@ const PieChart = (props) => {
           <Box
             sx={{
               display: "flex",
-              justifyContent: "space-between",
-              mx: 2,
+              justifyContent: "space-evenly",
               my: 2,
             }}
           >
@@ -172,7 +170,7 @@ const PieChart = (props) => {
               <Box
                 sx={{ width: "25px", height: "25px", bgcolor: "black", mr: 1 }}
               ></Box>
-              <Typography variant="caption">TOT Payers</Typography>
+              <Typography variant="caption">{t("totpayers")}</Typography>
             </Box>
             <Typography variant="caption">400,000</Typography>
             <Typography variant="caption">-10%</Typography>

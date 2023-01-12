@@ -6,9 +6,11 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
+import { useTranslation } from "react-i18next";
 import { NavLink } from "react-router-dom";
 import logo from "../assets/logo.png";
 const Login = () => {
+  const { t } = useTranslation();
   return (
     <Box
       sx={{
@@ -33,7 +35,7 @@ const Login = () => {
       >
         <img src={logo} alt="Logo" width={"20%"} />
         <Typography variant="h5" color="white">
-          LOGIN
+          {t("welcome")}
         </Typography>
 
         <Paper
@@ -46,19 +48,19 @@ const Login = () => {
           }}
         >
           <Typography variant="subtitle" sx={{ py: 1 }}>
-            By login you agree our Terms & Condition
+            {t("loginTitle")}
           </Typography>
           <TextField
             sx={{ borderRadius: "7px", mb: 2, mt: 3 }}
             variant="outlined"
-            label="Username"
+            label={t("username")}
             size="small"
             fullWidth
           />
           <TextField
             sx={{ borderRadius: "7px" }}
             variant="outlined"
-            label="Password"
+            label={t("password")}
             size="small"
             fullWidth
           />
@@ -71,7 +73,7 @@ const Login = () => {
             }}
           >
             <Button component={NavLink} variant="outlined" to="/dashboard">
-              Login
+              {t("login")}
             </Button>
           </Box>
         </Paper>

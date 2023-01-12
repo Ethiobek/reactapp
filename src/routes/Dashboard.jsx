@@ -10,21 +10,7 @@ import {
   abyssiniaBankColor,
   dashenBankColor,
 } from "../utils/colors";
-
-const sampleData = [
-  { x: "Jan", y: 8356 },
-  { x: "Feb", y: 1235 },
-  { x: "Mar", y: 2235 },
-  { x: "Apr", y: 4135 },
-  { x: "May", y: 6235 },
-  { x: "Jun", y: 1356 },
-  { x: "Jul", y: 1235 },
-  { x: "Aug", y: 5155 },
-  { x: "Sep", y: 4235 },
-  { x: "Oct", y: 3123 },
-  { x: "Nov", y: 6635 },
-  { x: "Dec", y: 6235 },
-];
+import { useTranslation } from "react-i18next";
 
 const sampleData2 = [
   { x: "Jan", y: 1502 },
@@ -42,6 +28,21 @@ const sampleData2 = [
 ];
 
 const Dashboard = () => {
+  const { t } = useTranslation();
+  const sampleData = [
+    { x: t("Jan"), y: 8356 },
+    { x: t("Feb"), y: 1235 },
+    { x: t("Mar"), y: 2235 },
+    { x: t("Apr"), y: 4135 },
+    { x: t("May"), y: 6235 },
+    { x: t("Jun"), y: 1356 },
+    { x: t("Jul"), y: 1235 },
+    { x: t("Aug"), y: 5155 },
+    { x: t("Sep"), y: 4235 },
+    { x: t("Oct"), y: 3123 },
+    { x: t("Nov"), y: 6635 },
+    { x: t("Dec"), y: 6235 },
+  ];
   return (
     <>
       <ResponsiveDrawer />
@@ -59,34 +60,42 @@ const Dashboard = () => {
         <Grid container spacing={2} sx={{ mt: 1 }}>
           <Grid xs={12} md={6} sm={6} xl={3} lg={3}>
             <SummaryCard
-              title="Collected VAT"
-              amount="32,916,217 ETB"
+              title={t("collectedVat")}
+              amount={`32,916,217 ${t("etb")}`}
               rate="12"
               rateStatus="danger"
+              freq={t("monthly")}
+              currency={t("etb")}
             />
           </Grid>
           <Grid xs={12} md={6} sm={6} xl={3} lg={3}>
             <SummaryCard
-              title="Collected TOT"
-              amount="2,415,522 ETB"
+              title={t("collectedTot")}
+              amount={`2,415,522 ${t("etb")}`}
               rate="15"
               rateStatus="success"
+              freq={t("monthly")}
+              currency={t("etb")}
             />
           </Grid>
           <Grid xs={12} md={6} sm={6} xl={3} lg={3}>
             <SummaryCard
-              title="Payment Instructions"
+              title={t("payInsTotal")}
               amount="741"
               rate="16"
               rateStatus="success"
+              freq={t("monthly")}
+              currency={t("etb")}
             />
           </Grid>
           <Grid xs={12} md={6} sm={6} xl={3} lg={3}>
             <SummaryCard
-              title="Declaration Docs"
+              title={t("declarationTotal")}
               amount="451"
               rate="10"
               rateStatus="danger"
+              freq={t("monthly")}
+              currency={t("etb")}
             />
           </Grid>
           <Grid xs={12} md={8} sm={12} xl={8} lg={8}>
