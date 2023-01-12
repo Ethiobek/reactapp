@@ -60,6 +60,7 @@ function ResponsiveDrawer(props) {
     <Box
       sx={{
         bgcolor: "#030911",
+        height: "100%",
       }}
     >
       <Box>
@@ -89,7 +90,7 @@ function ResponsiveDrawer(props) {
           </Box>
         </Box>
       </Box>
-      <Box>
+      <Box sx={{ bgcolor: "#030911" }}>
         <List>
           <Divider sx={{ width: "100%" }} />
           <Link
@@ -209,7 +210,6 @@ function ResponsiveDrawer(props) {
               color: "#05396B",
               bgcolor: "#030911",
             },
-            border: "1px solid red",
           }}
         >
           {drawer}
@@ -223,7 +223,6 @@ function ResponsiveDrawer(props) {
               width: drawerWidth,
               bgcolor: "#030911",
             },
-            border: "1px solid red",
           }}
           open
         >
