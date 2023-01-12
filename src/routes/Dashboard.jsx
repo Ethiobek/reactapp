@@ -3,6 +3,13 @@ import { BankSummary, SummaryCard } from "../components/Cards";
 import { BarChart, LineChart, PieChart } from "../components/Charts";
 import ResponsiveDrawer from "../components/RespnsiveLayout";
 import { theme } from "../utils/theme";
+import Carousel from "react-material-ui-carousel";
+import {
+  hibretBankColor,
+  cbeColor,
+  abyssiniaBankColor,
+  dashenBankColor,
+} from "../utils/colors";
 
 const sampleData = [
   { x: "Jan", y: 8356 },
@@ -88,7 +95,40 @@ const Dashboard = () => {
 
           <Grid xs={12} md={4} sm={12} xl={4} lg={4}>
             <PieChart data={sampleData} detailed />
-            <BankSummary />
+            <Carousel>
+              <BankSummary
+                bankName={"Commercial Bank of Ethiopia"}
+                accNumber={"1000185251113"}
+                beneficieryName={"Bole K/Ketema"}
+                collectedAmount={"14,526"}
+                notRecieved={"6,512"}
+                bgColor={cbeColor}
+              />
+              <BankSummary
+                bankName={"Hibret Bank"}
+                accNumber={"1000185251113"}
+                beneficieryName={"Lideta K/Ketema"}
+                collectedAmount={"4,654"}
+                notRecieved={"985"}
+                bgColor={hibretBankColor}
+              />
+              <BankSummary
+                bankName={"Dashen Bank"}
+                accNumber={"1000185251113"}
+                beneficieryName={"Kolfe K/Ketema"}
+                collectedAmount={"51,212"}
+                notRecieved={"512"}
+                bgColor={dashenBankColor}
+              />
+              <BankSummary
+                bankName={"Abyssinia Bank"}
+                accNumber={"1000185251113"}
+                beneficieryName={"Akaki K/Ketema"}
+                collectedAmount={"9,417"}
+                notRecieved={"568"}
+                bgColor={abyssiniaBankColor}
+              />
+            </Carousel>
             {/*Bank   */}
           </Grid>
         </Grid>

@@ -79,7 +79,7 @@ const BankSummary = (props) => {
   return (
     <Paper
       theme={darkTheme}
-      sx={{ mx: 1, my: 1, bgcolor: "#0E0A23" }}
+      sx={{ mx: 1, my: 1, bgcolor: props.bgColor }}
       elevation={3}
     >
       <Box
@@ -92,14 +92,14 @@ const BankSummary = (props) => {
       >
         <Box sx={{ display: "flex" }}>
           <Toll sx={{ mr: 1, color: "yellow" }} />
-          <Typography>Commercial Bank of Ethiopia</Typography>
+          <Typography>{props.bankName}</Typography>
         </Box>
       </Box>
       <Box sx={{ display: "flex", justifyContent: "center", p: 1 }}>
-        <Typography letterSpacing={2}>10001*****113</Typography>
+        <Typography letterSpacing={2}>{props.accNumber}</Typography>
       </Box>
       <Box sx={{ display: "flex", justifyContent: "center", p: 1 }}>
-        <Typography variant="subtitle1">Lideta K/Ketema</Typography>
+        <Typography variant="subtitle1">{props.beneficieryName}</Typography>
       </Box>
       <Box
         sx={{
@@ -119,7 +119,7 @@ const BankSummary = (props) => {
             <Box sx={{ mr: 1, color: "green" }}>
               <DoneAll />
             </Box>
-            <Box>14,546</Box>
+            <Box>{props.collectedAmount}</Box>
           </Box>
           <Typography variant="subtitle">Collected Money</Typography>
         </Box>
@@ -136,9 +136,9 @@ const BankSummary = (props) => {
             <Box sx={{ mr: 1, color: "yellow" }}>
               <RotateLeft />
             </Box>
-            <Box>14,546</Box>
+            <Box>{props.notRecieved}</Box>
           </Box>
-          <Typography variant="subtitle">Not receive yet</Typography>
+          <Typography variant="subtitle">Not received yet</Typography>
         </Box>
       </Box>
     </Paper>
