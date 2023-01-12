@@ -1,4 +1,4 @@
-import { Fab, ThemeProvider, Typography } from "@mui/material";
+import { Box, Fab, ThemeProvider, Typography } from "@mui/material";
 import { darkTheme, theme } from "./utils/theme";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { ReactQueryDevtools } from "react-query/devtools";
@@ -17,22 +17,38 @@ import { Report } from "./routes/Report";
 import { Login } from "./routes/Login";
 import {
   DarkMode,
+  Language,
+  LanguageTwoTone,
   LightMode,
   LightModeOutlined,
   LightModeRounded,
 } from "@mui/icons-material";
 import { useEffect, useState } from "react";
+import i18next from "i18next";
+
 function App() {
   const [dmode, setDmode] = useState(localStorage.getItem("mode") || "light");
+  const [lang, setLang] = useState(localStorage.getItem("i18nextLng") || "en");
+
   const queryClient = new QueryClient();
   const darkMode = () => {
     setDmode((prevMode) => (prevMode === "light" ? "dark" : "light"));
+  };
+
+  const changeLanguage = () => {
+    setLang((prevLang) => (prevLang === "en" ? "am" : "en"));
   };
 
   useEffect(() => {
     // setDmode((prevMode) => (prevMode === "light" ? "dark" : "light"));
     localStorage.setItem("mode", dmode);
   }, [dmode, setDmode]);
+
+  useEffect(() => {
+    localStorage.setItem("i18nextLng", lang);
+    i18next.changeLanguage(lang);
+  }, [lang, setLang]);
+
   return (
     <QueryClientProvider client={queryClient}>
       <ThemeProvider theme={dmode == "dark" ? darkTheme : theme}>
@@ -56,7 +72,24 @@ function App() {
       </ThemeProvider>
       <Fab
         color="primary"
+        size="medium"
         aria-label="add"
+        sx={{
+          position: "absolute",
+          margin: 0,
+          top: "auto",
+          right: 20,
+          bottom: 80,
+          left: "auto",
+          position: "fixed",
+        }}
+        onClick={darkMode}
+      >
+        {dmode === "light" ? <DarkMode /> : <LightMode />}
+      </Fab>
+      <Fab
+        aria-label="add"
+        size="medium"
         sx={{
           position: "absolute",
           margin: 0,
@@ -66,9 +99,19 @@ function App() {
           left: "auto",
           position: "fixed",
         }}
-        onClick={darkMode}
+        onClick={changeLanguage}
       >
-        {dmode === "light" ? <DarkMode /> : <LightMode />}
+        {lang === "en" ? (
+          <Box sx={{ display: "flex", flexDirection: "column" }}>
+            አማ
+            <Language />
+          </Box>
+        ) : (
+          <Box>
+            En
+            <Language />
+          </Box>
+        )}
       </Fab>
       <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>

@@ -29,6 +29,7 @@ import { Outlet } from "react-router-dom";
 import { NavLink } from "react-router-dom";
 import { Avatar } from "@mui/material";
 import logo from "../assets/logo.png";
+import { useTranslation } from "react-i18next";
 
 const drawerWidth = 240;
 
@@ -50,7 +51,7 @@ const Link = ({ to, icon, label }) => (
 function ResponsiveDrawer(props) {
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
-
+  const { t } = useTranslation();
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
@@ -95,54 +96,55 @@ function ResponsiveDrawer(props) {
           <Link
             to="/dashboard"
             icon={<Dashboard color="inherit" />}
-            label="Dashboard"
+            label={t("dashboard")}
           />
 
           <Link
             to="/tax-payers"
             icon={<Groups color="inherit" />}
-            label="Tax Payers"
+            label={t("taxpayers")}
           />
           <Link
             to="/pay-instruction"
             icon={<AddCard color="inherit" />}
-            label="Pay. Instruction"
+            label={t("payIns")}
           />
           <Link
             to="/vat-declaration"
             icon={<Campaign color="inherit" />}
-            label="VAT Declaration"
+            label={t("vatdec")}
           />
           <Link to="/users" icon={<Group color="inherit" />} label="Users" />
           <Link
             to="/tax-centers"
             icon={<OtherHouses color="inherit" />}
-            label="Tax Centers"
+            label={t("users")}
           />
           <Link
             to="/returned-vat"
             icon={<AssignmentReturn color="inherit" />}
-            label="Returned VAT"
+            label={t("tcenter")}
           />
           <Link
             to="/goods-on-hand"
             icon={<AssistWalker color="inherit" />}
-            label="Goods On Hand"
+            label={t("retvat")}
           />
           <Link
             to="/control-panel"
             icon={<Settings color="inherit" />}
-            label="Control Panel"
+            label={t("cpanel")}
           />
           <Link
             to="/reports"
             icon={<BarChart color="inherit" />}
-            label="Report"
+            label={t("report")}
           />
           <Link
             to="/activity-log"
             icon={<Psychology color="inherit" />}
-            label="Activity Log"
+            label={t("actlog")}
+            f
           />
         </List>
       </Box>
@@ -192,7 +194,7 @@ function ResponsiveDrawer(props) {
           </IconButton>
           <img src={logo} width="40px" alt="logo" />
           <Typography variant="subtitle1" noWrap component="div" sx={{ ml: 1 }}>
-            Addis Ababa City Government
+            {t("app_title")}
           </Typography>
         </Toolbar>
       </AppBar>
