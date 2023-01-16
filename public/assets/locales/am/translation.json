@@ -47,5 +47,11 @@
   "totpayers": "ተ.ኦ.ታ ከፋዮች",
   "vatpayers": "ተ.እ.ታ ከፋዮች",
   "collectedMoney": "ገቢ የተደረገ ገንዘብ",
-  "notRecievedYet": "ገቢ ያልተደረገ ገንዘብ"
+  "notRecievedYet": "ገቢ ያልተደረገ ገንዘብ",
+  "taxpayerDescr": "ይህ የግብር ከፋዮች ሰሌዳ ነው። በዚህ ገፅ ላይ አዲስ ግብር ከፋይ መመዝገብ እና የተመዘገቡትን መመልከት ያስችላል። ",
+  "importFile": "መረጃ ጫን",
+  "fd_taxpayers_loaded_succ": "የግብር ከፋዮች መረጃ ለእይታ ዝግጁ ሆኗል!",
+  "add-new": "አዲስ መዝግብ",
+  "export": "ገልብጥ",
+  "cp-right": "የቅጂ መብት"
 }

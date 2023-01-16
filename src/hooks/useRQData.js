@@ -6,7 +6,7 @@ import axios from "axios";
 const useGetAllData = (endpoint) => {
   const fetch = () => {
     return axios.get(
-      `https://6273f57c3d2b510074256ac3.mockapi.io/blog/${endpoint}`
+      `https://63be6db4585bedcb36ad0e57.mockapi.io/api/v1/${endpoint}`
     );
   };
   var qryKey = endpoint + "_data";
@@ -38,7 +38,7 @@ const usePostData = (endPoint) => {
     (data) => {
       console.log("Data : " + data);
       return axios.post(
-        `https://6273f57c3d2b510074256ac3.mockapi.io/blog/${endPoint}`,
+        `https://63be6db4585bedcb36ad0e57.mockapi.io/api/v1/${endPoint}`,
         data
       );
     },

@@ -27,7 +27,7 @@ import {
 } from "@mui/icons-material";
 import { Outlet } from "react-router-dom";
 import { NavLink } from "react-router-dom";
-import { Avatar } from "@mui/material";
+import { Avatar, Paper } from "@mui/material";
 import logo from "../assets/logo.png";
 import { useTranslation } from "react-i18next";
 
@@ -213,6 +213,26 @@ function ResponsiveDrawer(props) {
           }}
         >
           {drawer}
+          <Paper
+            sx={{
+              margin: "auto",
+              position: "relative",
+              bottom: 0,
+              bgcolor: "#030911",
+              width: "100%",
+              display: "flex",
+              justifyContent: "center",
+              flexDirection: "column",
+              textAlign: "center",
+            }}
+          >
+            <Typography color={"white"} variant="subtitle1">
+              {t("poweredBy")}
+            </Typography>
+            <Typography color={"white"} variant="caption">
+              {t("cp-right")} &copy; 2023
+            </Typography>
+          </Paper>
         </Drawer>
         <Drawer
           variant="permanent"
@@ -227,6 +247,16 @@ function ResponsiveDrawer(props) {
           open
         >
           {drawer}
+          <Box
+            sx={{
+              margin: "auto",
+              position: "relative",
+              bottom: 0,
+              bgcolor: "#030911",
+            }}
+          >
+            Company Name here
+          </Box>
         </Drawer>
       </Box>
       <Box

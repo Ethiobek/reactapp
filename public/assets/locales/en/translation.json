@@ -47,5 +47,11 @@
   "totpayers": "TOT payers",
   "vatpayers": "VAT payers",
   "collectedMoney": "Collected Money",
-  "notRecievedYet": "Not Received Yet"
+  "notRecievedYet": "Not Received Yet",
+  "taxpayerDescr": "This is tax payers portal, that helps you to retrieve the details of tax payers, register new tax payer with legal document and able to import a list of tax payers from file.",
+  "importFile": "Import Data",
+  "fd_taxpayers_loaded_succ": "Taxpayers data loaded successfully!",
+  "add-new": "Register New",
+  "export": "Export",
+  "cp-right": "Copy right"
 }
