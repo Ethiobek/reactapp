@@ -226,7 +226,7 @@ function ResponsiveDrawer(props) {
               textAlign: "center",
             }}
           >
-            <Typography color={"white"} variant="subtitle1">
+            <Typography color={"white"} variant="caption">
               {t("poweredBy")}
             </Typography>
             <Typography color={"white"} variant="caption">
@@ -260,7 +260,7 @@ function ResponsiveDrawer(props) {
               textAlign: "center",
             }}
           >
-            <Typography color={"white"} variant="subtitle1">
+            <Typography color={"white"} variant="caption">
               {t("poweredBy")}
             </Typography>
             <Typography color={"white"} variant="caption">
