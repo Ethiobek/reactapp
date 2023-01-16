@@ -247,16 +247,26 @@ function ResponsiveDrawer(props) {
           open
         >
           {drawer}
-          <Box
+          <Paper
             sx={{
               margin: "auto",
               position: "relative",
               bottom: 0,
               bgcolor: "#030911",
+              width: "100%",
+              display: "flex",
+              justifyContent: "center",
+              flexDirection: "column",
+              textAlign: "center",
             }}
           >
-            Company Name here
-          </Box>
+            <Typography color={"white"} variant="subtitle1">
+              {t("poweredBy")}
+            </Typography>
+            <Typography color={"white"} variant="caption">
+              {t("cp-right")} &copy; 2023
+            </Typography>
+          </Paper>
         </Drawer>
       </Box>
       <Box

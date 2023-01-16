@@ -114,25 +114,7 @@ function App() {
           </Box>
         )}
       </Fab>
-      <Box
-        sx={{
-          position: "absolute",
-          margin: 0,
-          top: "auto",
-          right: 20,
-          bottom: 2,
-          left: "auto",
-          position: "fixed",
-          bgcolor: "black",
-          p: "1px",
-          px: "10px",
-          borderRadius: "7px",
-        }}
-      >
-        <Typography color="gray" variant="caption">
-          {t("poweredBy")}
-        </Typography>
-      </Box>
+
       <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>
   );
