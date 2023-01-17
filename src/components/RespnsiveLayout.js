@@ -213,6 +213,7 @@ function ResponsiveDrawer(props) {
           }}
         >
           {drawer}
+          <Divider />
           <Paper
             sx={{
               margin: "auto",
@@ -247,6 +248,8 @@ function ResponsiveDrawer(props) {
           open
         >
           {drawer}
+          <Divider />
+
           <Paper
             sx={{
               margin: "auto",
