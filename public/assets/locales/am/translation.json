@@ -53,5 +53,16 @@
   "fd_taxpayers_loaded_succ": "የግብር ከፋዮች መረጃ ለእይታ ዝግጁ ሆኗል!",
   "add-new": "አዲስ መዝግብ",
   "export": "ገልብጥ",
-  "cp-right": "የቅጂ መብት"
+  "cp-right": "የቅጂ መብት",
+  "added_succs": "በተሳካ ሁኔታ ተመዝግቧል!",
+  "tin": "የግብር ከፋይ መለያ ቁጥር",
+  "full-name": "ሙሉ ስም",
+  "phone": "ስልክ",
+  "idn": "መለያ ቁጥር",
+  "new_taxp_registration": "የአዲስ ግብር ከፋዮች ምዝገባ",
+  "ntp_reg_label": "እባኮትን እያንዳንዱን መረጃ በጥንቃቄ ይሙሉ!",
+  "phn_req": "ስልክ ቁጥር አስፈላጊ ነው",
+  "logout": "ውጣ",
+  "setting": "ማስተካከያ",
+  "activity": "የዛሬ ክንውኖቼ"
 }

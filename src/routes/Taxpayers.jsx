@@ -6,7 +6,9 @@ import {
   FormControlLabel,
   FormGroup,
   Grid,
+  Icon,
   IconButton,
+  Input,
   Modal,
   Paper,
   Switch,
@@ -16,9 +18,11 @@ import {
 import { theme } from "../utils/theme";
 import ResponsiveDrawer from "../components/RespnsiveLayout";
 import {
+  Add,
   Close,
   CloudUpload,
   Create,
+  Delete,
   FollowTheSigns,
   MoreVert,
   Print,
@@ -37,6 +41,10 @@ import { Feedback } from "../components/Snackbar";
 import { useEffect, useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 import { display } from "@mui/system";
+import { NotFound } from "../components/NotFound";
+import { IMaskInput } from "react-imask";
+import { forwardRef } from "react";
+import PropTypes from "prop-types";
 
 const columns = [
   {
@@ -62,7 +70,7 @@ const columns = [
   {
     field: "status",
     headerName: "Actions",
-    width: 250,
+    width: 200,
     type: "actions",
     getActions: (params) => [
       <>
@@ -73,9 +81,15 @@ const columns = [
               borderRadius: "7px",
             }}
           >
-            <Create />
-            <Print />
-            <MoreVert />
+            <IconButton>
+              <Create color="warning" />
+            </IconButton>
+            <IconButton>
+              <Print color="primary" />
+            </IconButton>
+            <IconButton>
+              <Delete color="error" />
+            </IconButton>
           </Box>
         </FormGroup>
       </>,
@@ -109,23 +123,13 @@ const TaxPayers = () => {
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
   const { t } = useTranslation();
-  const { data, isLoading, isSuccess, refetch } = useGetAllData("taxpayers");
-
-  console.log(data?.data);
-  const succ = () => {
-    if (isLoading == false && isSuccess) {
-      return true;
-    }
-    return false;
-  };
 
   // hook form to add new tax payers
-
   const {
     control,
     handleSubmit,
     reset,
-    data: userPostData,
+    data: pdata,
     formState: { errors },
   } = useForm({});
 
@@ -135,11 +139,51 @@ const TaxPayers = () => {
     data: dataPost,
     error: errorPost,
     isSuccess: isAddUserSuccess,
-  } = usePostData("taxpayers", userPostData);
-  console.log(data);
+  } = usePostData("taxpayers", pdata);
+
+  const { data, isLoading, isSuccess, refetch, isError } =
+    useGetAllData("taxpayers");
+
+  useEffect(() => {
+    if (isSuccess) {
+      refetch();
+    }
+  }, [isSuccess]);
+
+  useEffect(() => {
+    if (isAddUserSuccess && !postLoading) {
+      console.log("###############");
+      console.log(pdata);
+      reset({ firstName: "", idn: "", tin: "", phone: "" });
+      refetch();
+      handleClose();
+    }
+  }, [isAddUserSuccess, postLoading]);
+
+  const TextMaskCustom = forwardRef(function TextMaskCustom(props, ref) {
+    const { onChange, ...other } = props;
+    return (
+      <IMaskInput
+        {...other}
+        mask="+251-000-000-000"
+        definitions={{
+          "#": /[0-9]/,
+        }}
+        inputRef={ref}
+        onAccept={(value) => onChange({ target: { name: props.name, value } })}
+        overwrite
+      />
+    );
+  });
+  TextMaskCustom.propTypes = {
+    name: PropTypes.string.isRequired,
+    onChange: PropTypes.func.isRequired,
+  };
+
   return (
     <>
       <ResponsiveDrawer />
+
       <Modal
         open={open}
         onClose={handleClose}
@@ -187,10 +231,10 @@ const TaxPayers = () => {
               >
                 <Box>
                   <Typography variant="h6" fontWeight={"bold"}>
-                    New Tax Payers Registrations
+                    {t("new_taxp_registration")}
                   </Typography>
                   <Typography variant="subtitle1">
-                    Create New Tax Payer
+                    {t("ntp_reg_label")}
                   </Typography>
                 </Box>
                 <IconButton>
@@ -220,10 +264,11 @@ const TaxPayers = () => {
                         margin="normal"
                         fullWidth
                         size="small"
-                        label="TIN"
+                        label={t("tin")}
                         helperText={errors?.tin ? errors?.tin?.message : ""}
                         error={errors?.tin}
                         {...field}
+                        value={field.value || ""}
                       />
                     )}
                   />
@@ -240,12 +285,13 @@ const TaxPayers = () => {
                         margin="normal"
                         fullWidth
                         size="small"
-                        label="Firstname"
+                        label={t("full-name")}
                         helperText={
                           errors?.firstName ? errors?.firstName?.message : ""
                         }
                         error={errors?.firstName}
                         {...field}
+                        value={field.value || ""}
                       />
                     )}
                   />
@@ -262,10 +308,11 @@ const TaxPayers = () => {
                         margin="normal"
                         fullWidth
                         size="small"
-                        label="idn"
+                        label={t("idn")}
                         helperText={errors?.idn ? errors?.idn?.message : ""}
                         error={errors?.idn}
                         {...field}
+                        value={field.value || ""}
                       />
                     )}
                   />
@@ -275,17 +322,23 @@ const TaxPayers = () => {
                     name="phone"
                     control={control}
                     rules={{
-                      required: "phone is required",
+                      required: t("phn_req"),
                     }}
                     render={({ field }) => (
                       <TextField
                         margin="normal"
                         fullWidth
                         size="small"
-                        label="phone"
+                        label={t("phone")}
                         helperText={errors?.phone ? errors?.phone?.message : ""}
                         error={errors?.phone}
                         {...field}
+                        value={field.value || ""}
+                        name="textmask"
+                        id="formatted-text-mask-input"
+                        InputProps={{
+                          inputComponent: TextMaskCustom,
+                        }}
                       />
                     )}
                   />
@@ -304,17 +357,17 @@ const TaxPayers = () => {
                 >
                   <Button
                     color="primary"
-                    onClick={handleSubmit((data, e) => {
-                      addTaxPayer(data);
+                    onClick={handleSubmit((userPostData, e) => {
+                      addTaxPayer(userPostData);
                     })}
                     variant="contained"
                     disabled={postLoading}
                     sx={{ px: 4 }}
                     startIcon={
-                      postLoading ? <CircularProgress size={13} /> : null
+                      postLoading ? <CircularProgress size={13} /> : <Add />
                     }
                   >
-                    Add
+                    {t("add-new")}
                   </Button>
                 </Grid>
               </Grid>
@@ -329,6 +382,14 @@ const TaxPayers = () => {
         duration={2000}
         type={"success"}
       />
+
+      <Feedback
+        status={isAddUserSuccess && !postLoading}
+        message={t("added_succs")}
+        duration={6000}
+        type={"success"}
+      />
+
       <Box
         sx={{
           [theme.breakpoints.not("xs")]: {
@@ -394,12 +455,11 @@ const TaxPayers = () => {
         <Box sx={{ height: 400, width: "99%" }}>
           {data?.data ? (
             <DataGrid
+              autoHeight
               rows={data?.data}
               columns={columns}
-              pageSize={5}
-              rowsPerPageOptions={[5]}
-              disableSelectionOnClick
-              experimentalFeatures={{ newEditingApi: true }}
+              pageSize={10}
+              disableSelectionOnClick={true}
             />
           ) : null}
         </Box>

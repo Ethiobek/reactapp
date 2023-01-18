@@ -21,13 +21,18 @@ import {
   Dashboard,
   Group,
   Groups,
+  HistoryToggleOff,
+  Logout,
   OtherHouses,
+  People,
+  PersonAdd,
   Psychology,
   Settings,
+  Timelapse,
 } from "@mui/icons-material";
 import { Outlet } from "react-router-dom";
 import { NavLink } from "react-router-dom";
-import { Avatar, Paper } from "@mui/material";
+import { Avatar, Menu, MenuItem, Paper } from "@mui/material";
 import logo from "../assets/logo.png";
 import { useTranslation } from "react-i18next";
 
@@ -54,6 +59,14 @@ function ResponsiveDrawer(props) {
   const { t } = useTranslation();
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
+  };
+  const [anchorEl, setAnchorEl] = React.useState(null);
+  const open = Boolean(anchorEl);
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
   };
 
   const drawer = (
@@ -161,7 +174,65 @@ function ResponsiveDrawer(props) {
   return (
     <Box sx={{ display: "flex" }}>
       <CssBaseline />
+      <Menu
+        anchorEl={anchorEl}
+        id="account-menu"
+        open={open}
+        onClose={handleClose}
+        onClick={handleClose}
+        PaperProps={{
+          elevation: 0,
+          sx: {
+            overflow: "visible",
+            filter: "drop-shadow(0px 2px 8px rgba(0,0,0,0.32))",
+            mt: 1.5,
+            "& .MuiAvatar-root": {
+              width: 32,
+              height: 32,
+              ml: -0.5,
+              mr: 1,
+            },
+            "&:before": {
+              content: '""',
+              display: "block",
+              position: "absolute",
+              top: 0,
+              right: 14,
+              width: 10,
+              height: 10,
+              bgcolor: "background.paper",
+              transform: "translateY(-50%) rotate(45deg)",
+              zIndex: 0,
+            },
+          },
+        }}
+        transformOrigin={{ horizontal: "right", vertical: "top" }}
+        anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
+      >
+        <MenuItem>
+          <Avatar /> Mr. Bereket Zergaw
+        </MenuItem>
 
+        <Divider />
+        <MenuItem>
+          <ListItemIcon>
+            <HistoryToggleOff fontSize="small" />
+          </ListItemIcon>
+          {t("activity")}
+        </MenuItem>
+        <MenuItem>
+          <ListItemIcon>
+            <Settings fontSize="small" />
+          </ListItemIcon>
+          {t("setting")}
+        </MenuItem>
+        <MenuItem component={NavLink} to={"/"}>
+          <ListItemIcon>
+            <Logout fontSize="small" />
+          </ListItemIcon>
+          {t("logout")}
+        </MenuItem>
+      </Menu>
       <AppBar
         position="fixed"
         sx={{
@@ -170,19 +241,45 @@ function ResponsiveDrawer(props) {
         }}
       >
         <Toolbar>
-          <IconButton
-            color="inherit"
-            aria-label="open drawer"
-            edge="start"
-            onClick={handleDrawerToggle}
-            sx={{ mr: 2, display: { sm: "none" } }}
+          <Box sx={{ display: "flex", width: "90%" }}>
+            <IconButton
+              color="inherit"
+              aria-label="open drawer"
+              edge="start"
+              onClick={handleDrawerToggle}
+              sx={{ mr: 2, display: { sm: "none" } }}
+            >
+              <MenuIcon />
+            </IconButton>
+            <img src={logo} width="40px" alt="logo" />
+            <Typography
+              variant="subtitle1"
+              noWrap
+              component="div"
+              sx={{ ml: 1 }}
+            >
+              {t("app_title")}
+            </Typography>
+          </Box>
+
+          <Box
+            sx={{
+              display: "flex",
+              width: "10%",
+              justifyContent: "right",
+            }}
           >
-            <MenuIcon />
-          </IconButton>
-          <img src={logo} width="40px" alt="logo" />
-          <Typography variant="subtitle1" noWrap component="div" sx={{ ml: 1 }}>
-            {t("app_title")}
-          </Typography>
+            <IconButton
+              onClick={handleClick}
+              size="small"
+              sx={{ ml: 2 }}
+              aria-controls={open ? "account-menu" : undefined}
+              aria-haspopup="true"
+              aria-expanded={open ? "true" : undefined}
+            >
+              <Avatar />
+            </IconButton>
+          </Box>
         </Toolbar>
       </AppBar>
       <Box

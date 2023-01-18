@@ -8,7 +8,7 @@ import { ActivityLog } from "./routes/ActivityLog";
 import { TaxPayers } from "./routes/Taxpayers";
 import { PaymentInstruction } from "./routes/PaymentInstruction";
 import { VatDeclaration } from "./routes/VatDeclaration";
-import { Users } from "./routes/Users";
+import { Users } from "./pages/Users";
 import { TaxCenters } from "./routes/TaxCenters";
 import { ReturnedVat } from "./routes/ReturnedVat";
 import { GoodsOnHand } from "./routes/GoodsOnHand";
@@ -114,7 +114,6 @@ function App() {
           </Box>
         )}
       </Fab>
-
       <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>
   );

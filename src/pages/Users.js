@@ -36,6 +36,7 @@ import {
 import { Feedback } from "../components/Snackbar";
 import { Controller, useForm } from "react-hook-form";
 import { theme } from "../utils/theme";
+import ResponsiveDrawer from "../components/RespnsiveLayout";
 
 // import countryList from "react-select-country-list";
 // import { countries } from "../utils/countries";
@@ -222,205 +223,217 @@ const Users = () => {
   }, [isAddUserSuccess, postLoading]);
   console.log("Selected Country : " + value);
   return (
-    <Box
-      sx={{
-        [theme.breakpoints.not("xs")]: {
-          ml: "250px",
-          mr: 1,
-        },
-        ml: 1,
-        mr: 1,
-      }}
-    >
-      <Feedback
-        status={isAddUserSuccess && !postLoading}
-        message={"User added successfully!"}
-        duration={6000}
-        type={"success"}
-      />
+    <>
+      <ResponsiveDrawer />
       <Box
         sx={{
+          [theme.breakpoints.not("xs")]: {
+            ml: "270px",
+            mr: 1,
+            mt: 4,
+          },
           m: 2,
-          display: "flex",
-          justifyContent: "right",
+          ml: 3,
         }}
       >
-        <Button onClick={handleOpen} variant="outlined">
-          Add User
-        </Button>
-      </Box>
-      <Modal
-        keepMounted
-        open={open}
-        onClose={handleClose}
-        aria-labelledby="keep-mounted-modal-title"
-        aria-describedby="keep-mounted-modal-description"
-      >
-        <Box sx={style}>
-          <Typography id="keep-mounted-modal-title" variant="h6" component="h2">
-            Add New User
-          </Typography>
-          <Typography id="keep-mounted-modal-description">
-            All fields are required except the optionals one!
-          </Typography>
-          <Box sx={{ mt: 1 }}>
-            <Controller
-              name="fullName"
-              control={control}
-              rules={{
-                required: "Fullname is required",
-              }}
-              render={({ field }) => (
-                <TextField
-                  margin="normal"
-                  fullWidth
-                  size="small"
-                  label="Fullname"
-                  helperText={errors?.fullName ? errors?.fullName?.message : ""}
-                  error={errors?.fullName}
-                  {...field}
-                />
-              )}
-            />
-            <Controller
-              name="email"
-              control={control}
-              rules={{
-                required: "Email is required",
-              }}
-              render={({ field }) => (
-                <TextField
-                  margin="normal"
-                  fullWidth
-                  size="small"
-                  label="Email"
-                  helperText={errors?.email ? errors?.email?.message : ""}
-                  error={errors?.email}
-                  {...field}
-                />
-              )}
-            />
-            <Controller
-              name="username"
-              control={control}
-              rules={{
-                required: "Username is required",
-              }}
-              render={({ field }) => (
-                <TextField
-                  margin="normal"
-                  fullWidth
-                  size="small"
-                  label="Username"
-                  helperText={errors?.username ? errors?.username?.message : ""}
-                  error={errors?.username}
-                  {...field}
-                />
-              )}
-            />
-            <Controller
-              name="phone"
-              control={control}
-              rules={{
-                required: "Phone is required",
-              }}
-              render={({ field }) => (
-                <TextField
-                  margin="normal"
-                  fullWidth
-                  size="small"
-                  label="Phone"
-                  helperText={errors?.phone ? errors?.phone?.message : ""}
-                  error={errors?.phone}
-                  {...field}
-                />
-              )}
-            />
-            <Controller
-              name="country"
-              control={control}
-              rules={{
-                required: "Country is required",
-              }}
-              render={({ field }) => (
-                <TextField
-                  margin="normal"
-                  select
-                  fullWidth
-                  size="small"
-                  label="Select Countries"
-                  helperText={errors?.country ? errors?.country?.message : ""}
-                  error={errors?.country}
-                  {...field}
-                >
-                  {countries.map((item) => (
-                    <MenuItem key={item?.label} value={item?.label}>
-                      <Box sx={{ "& > img": { mr: 2, flexShrink: 0 } }}>
-                        <img
-                          loading="lazy"
-                          width="20"
-                          src={`https://flagcdn.com/w20/${item?.code.toLowerCase()}.png`}
-                          srcSet={`https://flagcdn.com/w40/${item?.code.toLowerCase()}.png 2x`}
-                          alt=""
-                        />
-                        {item?.label}
-                      </Box>
-                    </MenuItem>
-                  ))}
-                </TextField>
-              )}
-            />
-            <Button
-              color="primary"
-              onClick={handleSubmit((data, e) => {
-                addUser(data);
-              })}
-              variant="contained"
-              disabled={postLoading}
-              sx={{ px: 4 }}
-              startIcon={postLoading ? <CircularProgress size={13} /> : null}
-            >
-              Add
-            </Button>
-          </Box>
-        </Box>
-      </Modal>
-      <Feedback
-        status={isSuccess && !isLoading}
-        message={
-          status
-            ? "User approved successfully!"
-            : "User returned to pending status successfully!"
-        }
-        duration={3000}
-        type={status ? "success" : "error"}
-      />
-      {isLoading ? <LoadingProgress /> : null}
-      {statusLoading ? <LoadingProgress /> : null}
-      {isError ? (
+        <Feedback
+          status={isAddUserSuccess && !postLoading}
+          message={"User added successfully!"}
+          duration={6000}
+          type={"success"}
+        />
         <Box
           sx={{
-            width: "100%",
+            m: 2,
             display: "flex",
-            justifyContent: "center",
+            justifyContent: "right",
           }}
         >
-          <NotFound />
+          <Button onClick={handleOpen} variant="outlined">
+            Add User
+          </Button>
         </Box>
-      ) : null}
-      {data ? (
-        <DataGrid
-          autoHeight
-          rows={data?.data}
-          columns={columns}
-          pageSize={5}
-          components={{
-            Toolbar: CustomToolbar,
-            Pagination: CustomPagination,
-          }}
+        <Modal
+          keepMounted
+          open={open}
+          onClose={handleClose}
+          aria-labelledby="keep-mounted-modal-title"
+          aria-describedby="keep-mounted-modal-description"
+        >
+          <Box sx={style}>
+            <Typography
+              id="keep-mounted-modal-title"
+              variant="h6"
+              component="h2"
+            >
+              Add New User
+            </Typography>
+            <Typography id="keep-mounted-modal-description">
+              All fields are required except the optionals one!
+            </Typography>
+            <Box sx={{ mt: 1 }}>
+              <Controller
+                name="fullName"
+                control={control}
+                rules={{
+                  required: "Fullname is required",
+                }}
+                render={({ field }) => (
+                  <TextField
+                    margin="normal"
+                    fullWidth
+                    size="small"
+                    label="Fullname"
+                    helperText={
+                      errors?.fullName ? errors?.fullName?.message : ""
+                    }
+                    error={errors?.fullName}
+                    {...field}
+                  />
+                )}
+              />
+              <Controller
+                name="email"
+                control={control}
+                rules={{
+                  required: "Email is required",
+                }}
+                render={({ field }) => (
+                  <TextField
+                    margin="normal"
+                    fullWidth
+                    size="small"
+                    label="Email"
+                    helperText={errors?.email ? errors?.email?.message : ""}
+                    error={errors?.email}
+                    {...field}
+                  />
+                )}
+              />
+              <Controller
+                name="username"
+                control={control}
+                rules={{
+                  required: "Username is required",
+                }}
+                render={({ field }) => (
+                  <TextField
+                    margin="normal"
+                    fullWidth
+                    size="small"
+                    label="Username"
+                    helperText={
+                      errors?.username ? errors?.username?.message : ""
+                    }
+                    error={errors?.username}
+                    {...field}
+                  />
+                )}
+              />
+              <Controller
+                name="phone"
+                control={control}
+                rules={{
+                  required: "Phone is required",
+                }}
+                render={({ field }) => (
+                  <TextField
+                    margin="normal"
+                    fullWidth
+                    size="small"
+                    label="Phone"
+                    helperText={errors?.phone ? errors?.phone?.message : ""}
+                    error={errors?.phone}
+                    {...field}
+                  />
+                )}
+              />
+              <Controller
+                name="country"
+                control={control}
+                rules={{
+                  required: "Country is required",
+                }}
+                render={({ field }) => (
+                  <TextField
+                    margin="normal"
+                    select
+                    fullWidth
+                    size="small"
+                    label="Select Countries"
+                    helperText={errors?.country ? errors?.country?.message : ""}
+                    error={errors?.country}
+                    {...field}
+                  >
+                    {countries.map((item) => (
+                      <MenuItem key={item?.label} value={item?.label}>
+                        <Box sx={{ "& > img": { mr: 2, flexShrink: 0 } }}>
+                          <img
+                            loading="lazy"
+                            width="20"
+                            src={`https://flagcdn.com/w20/${item?.code.toLowerCase()}.png`}
+                            srcSet={`https://flagcdn.com/w40/${item?.code.toLowerCase()}.png 2x`}
+                            alt=""
+                          />
+                          {item?.label}
+                        </Box>
+                      </MenuItem>
+                    ))}
+                  </TextField>
+                )}
+              />
+              <Button
+                color="primary"
+                onClick={handleSubmit((data, e) => {
+                  addUser(data);
+                })}
+                variant="contained"
+                disabled={postLoading}
+                sx={{ px: 4 }}
+                startIcon={postLoading ? <CircularProgress size={13} /> : null}
+              >
+                Add
+              </Button>
+            </Box>
+          </Box>
+        </Modal>
+        <Feedback
+          status={isSuccess && !isLoading}
+          message={
+            status
+              ? "User approved successfully!"
+              : "User returned to pending status successfully!"
+          }
+          duration={3000}
+          type={status ? "success" : "error"}
         />
-      ) : null}
-    </Box>
+        {isLoading ? <LoadingProgress /> : null}
+        {statusLoading ? <LoadingProgress /> : null}
+        {isError ? (
+          <Box
+            sx={{
+              width: "100%",
+              display: "flex",
+              justifyContent: "center",
+            }}
+          >
+            <NotFound />
+          </Box>
+        ) : null}
+        {data ? (
+          <DataGrid
+            autoHeight
+            rows={data?.data}
+            columns={columns}
+            pageSize={10}
+            components={{
+              Toolbar: CustomToolbar,
+              Pagination: CustomPagination,
+            }}
+          />
+        ) : null}
+      </Box>
+    </>
   );
 };
 export { Users };

@@ -53,5 +53,16 @@
   "fd_taxpayers_loaded_succ": "Taxpayers data loaded successfully!",
   "add-new": "Register New",
   "export": "Export",
-  "cp-right": "Copy right"
+  "cp-right": "Copy right",
+  "added_succs": "Registered successfully!",
+  "tin": "TIN",
+  "full-name": "Fullname",
+  "phone": "Phone",
+  "idn": "IDN",
+  "new_taxp_registration": "New Tax Payers Registration!",
+  "ntp_reg_label": "Please fill every information carefully!",
+  "phn_req": "Phone is required",
+  "logout": "Logout",
+  "setting": "Setting",
+  "activity": "My today's activity"
 }

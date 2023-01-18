@@ -43,14 +43,14 @@ const usePostData = (endPoint) => {
       );
     },
     {
-      onSuccess: (data) => {
-        queryClient.setQueryData(endPoint + "_data", (oldQueryData) => {
-          return {
-            ...oldQueryData,
-            data: [...oldQueryData.data, data.data],
-          };
-        });
-      },
+      // onSuccess: (data) => {
+      //   queryClient.setQueryData(endPoint + "_data", (oldQueryData) => {
+      //     return {
+      //       ...oldQueryData,
+      //       data: [...oldQueryData.data, data.data],
+      //     };
+      //   });
+      // },
     }
   );
 };
