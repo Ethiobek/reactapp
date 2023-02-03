@@ -26,6 +26,7 @@ import {
 import { useEffect, useState } from "react";
 import i18next from "i18next";
 import { useTranslation } from "react-i18next";
+import { LoginM } from "./routes/LoginM";
 
 function App() {
   const [dmode, setDmode] = useState(localStorage.getItem("mode") || "light");
@@ -55,7 +56,7 @@ function App() {
       <ThemeProvider theme={dmode == "dark" ? darkTheme : theme}>
         <Router>
           <Routes>
-            <Route path="/" element={<Login />} />
+            <Route path="/" element={<LoginM />} />
             <Route path="/login" element={<Login />} />
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/activity-log" element={<ActivityLog />} />
